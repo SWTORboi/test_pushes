@@ -41,10 +41,12 @@ pthread_t input_thread;
 
 ///////////////////////////
 	// input from device
+/*
 libusb_context *ctx = NULL; // a libusb session
 libusb_device **devs; // pointer to pointer of device, used to retrieve a list of devices
 int r; // for return values
 ssize_t cnt; // holding number of devices in list
+*/
 ////////////////////////
 
 void write_to_hardware(int vga_fd, int register_address, int data) {
@@ -224,6 +226,7 @@ void *input_thread_function(void *ignored)
 	uint8_t first, second, chosen;
 
 	for (;;) {
+		//r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		if (r == 0 && transferred == sizeof(packet)) {
 
