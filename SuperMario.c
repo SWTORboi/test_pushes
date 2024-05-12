@@ -226,6 +226,7 @@ void *input_thread_function(void *ignored)
 	for (;;) {
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		if (r == 0 && transferred == sizeof(packet)) {
+			fprintf("Successful Transfer")
 
 			first = packet.keycode[0];
 			second = packet.keycode[1];
@@ -248,10 +249,10 @@ void *input_thread_function(void *ignored)
 				case 0x2C:
 					current_key = KEY_JUMP;
 					break;
-				case 0x04:
+				case 0x50:
 					current_key = KEY_LEFT;
 					break;
-				case 0x07:
+				case 0x4F:
 					current_key = KEY_RIGHT;
 					break;
 				case 0x0A:
@@ -585,14 +586,13 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	/*
 	if ((keyboard = openkeyboard(&endpoint_address)) == NULL) {
 		fprintf(stderr, "Did not find a keyboard\n");
 		exit(EXIT_FAILURE);
 	}
-	*/
 
-	/////////////////////////////////
+	////////////////////////////////
+	/*
 	r = libusb_init(&ctx); // initialize a library session
 	if (r < 0)
 	{
@@ -633,7 +633,8 @@ int main() {
 	}
 	printf("%s\n", "Claimed Interface");
 
-	////////////////////////////////
+	*/
+///////////////////////////////
 
 	if (pthread_create(&input_thread, NULL, input_thread_function, NULL) != 0) {
 		fprintf(stderr, "Failed to create input thread\n");
