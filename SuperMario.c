@@ -45,7 +45,6 @@ libusb_context *ctx = NULL; // a libusb session
 libusb_device **devs; // pointer to pointer of device, used to retrieve a list of devices
 int r; // for return values
 ssize_t cnt; // holding number of devices in list
-struct libusb_device_handle *mouse; // a mouse device handle
 ////////////////////////
 
 void write_to_hardware(int vga_fd, int register_address, int data) {
@@ -610,8 +609,8 @@ int main() {
 	{
 		printf("%s\n", "Get Device Error"); // there was an error
 	}
-	mouse = libusb_open_device_with_vid_pid(ctx, 0x081f, 0xe401);
-	if (mouse == NULL)
+	keyboard = libusb_open_device_with_vid_pid(ctx, 0x081f, 0xe401);
+	if (keyboard == NULL)
 	{
 		printf("%s\n", "Cannot open device");
 		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
@@ -623,13 +622,13 @@ int main() {
 	{
 		printf("%s\n", "Device opened");
 		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
-		if (libusb_kernel_driver_active(mouse, 0) == 1)
+		if (libusb_kernel_driver_active(keyboard, 0) == 1)
 		{ // find out if kernel driver is attached
 			printf("%s\n", "Kernel Driver Active");
-			if (libusb_detach_kernel_driver(mouse, 0) == 0) // detach it
+			if (libusb_detach_kernel_driver(keyboard, 0) == 0) // detach it
 				printf("%s\n", "Kernel Driver Detached!");
 			}
-			r = libusb_claim_interface(mouse, 0); // claim interface 0 (the first) of device (mine had just 1)
+			r = libusb_claim_interface(keyboard, 0); // claim interface 0 (the first) of device (mine had just 1)
 			if (r < 0)
 			{
 				printf("%s\n", "Cannot Claim Interface");
