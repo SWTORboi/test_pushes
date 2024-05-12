@@ -223,7 +223,7 @@ void *input_thread_function(void *ignored)
 	int transferred;
 	int r;
 	struct timeval timeout = { 0, 500000 };
-	uint8_t first, second, third, forth, fifth, sixth, seventh, eigth, chosen;
+	uint8_t first, second, third, fourth, fifth, sixth, seventh, eigth, chosen;
 
 	for (;;) {
 		//r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
