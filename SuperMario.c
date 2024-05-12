@@ -232,6 +232,12 @@ void *input_thread_function(void *ignored)
 
 			first = packet.keycode[0];
 			second = packet.keycode[1];
+			third = packet.keycode[2];
+			fourth = packet.keycode[3];
+			fifth = packet.keycode[4];
+			sixth = packet.keycode[5];
+			seventh = packet.keycode[6];
+			eigth = packet.keycode[7];
 			chosen = 0;
 
 			if (first != 0 && second != 0) {
