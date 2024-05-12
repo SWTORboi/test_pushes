@@ -604,8 +604,7 @@ int main() {
 		printf("%s %d\n", "Init Error", r); // there was an error
 		return 1;
 	}
-	libusb_set_debug(ctx, 3); // set verbosity level to 3, as suggested in the
-	documentation
+	libusb_set_debug(ctx, 3); // set verbosity level to 3, as suggested in the documentation
 	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
 	if (cnt < 0)
 	{
@@ -637,7 +636,7 @@ int main() {
 				return 1;
 			}
 	}
-	printf("%s\n", "Claimed Interface")
+	printf("%s\n", "Claimed Interface");
 
 	////////////////////////////////
 
