@@ -223,7 +223,7 @@ void *input_thread_function(void *ignored)
 	int transferred;
 	int r;
 	struct timeval timeout = { 0, 500000 };
-	uint8_t first, second, chosen;
+	uint8_t first, second, third, forth, fifth, sixth, seventh, eigth, chosen;
 
 	for (;;) {
 		//r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
@@ -256,6 +256,12 @@ void *input_thread_function(void *ignored)
 			printf("Chosen: %x \n", chosen);
 			printf("First: %x \n", first);
 			printf("Second: %x \n", second);
+			printf("third: %x \n", third);
+			printf("fourth: %x \n", fourth);
+			printf("fifth: %x \n", fifth);
+			printf("sixth: %x \n", sixth);
+			printf("seventh: %x \n", seventh);
+			printf("eigth: %x \n", eigth);
 
 			switch(chosen) {
 				case 0x2C:
