@@ -226,7 +226,6 @@ void *input_thread_function(void *ignored)
 	for (;;) {
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		if (r == 0 && transferred == sizeof(packet)) {
-			printf("Successful Transfer");
 
 			first = packet.keycode[0];
 			second = packet.keycode[1];
@@ -245,6 +244,7 @@ void *input_thread_function(void *ignored)
 				chosen = first;
 			}
 
+			printf("Code: %d", chosen);
 			switch(chosen) {
 				case 0x2C:
 					current_key = KEY_JUMP;
