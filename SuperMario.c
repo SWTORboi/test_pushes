@@ -240,51 +240,7 @@ void *input_thread_function(void *ignored)
 			eigth = packet.keycode[7];
 		
 			chosen = 0;
-/********************
-			if (forth != 0 && eigth != 0) {
 
-				if (first == second) {
-					usleep(5000);
-					continue;
-				} else {
-					chosen = second;
-				}
-
-			} else {
-				chosen = first;
-			}
-
-
-			printf("Chosen: %x \n", chosen);
-			printf("First: %x \n", first);
-			printf("Second: %x \n", second);
-			printf("third: %x \n", third);
-			printf("fourth: %x \n", fourth);
-			printf("fifth: %x \n", fifth);
-			printf("sixth: %x \n", sixth);
-			printf("seventh: %x \n", seventh);
-			printf("eigth: %x \n", eigth);
-
-			
-			switch(chosen) {
-				case 0x1F:
-					current_key = KEY_JUMP;
-					break;
-				case 0x9E:
-					current_key = KEY_LEFT;
-					break;
-				case 0x2E:
-					current_key = KEY_RIGHT;
-					break;
-				case 0x20:
-					current_key = KEY_NEWGAME;
-					break;
-				default:
-					current_key = KEY_NONE;
-					break;
-			}
-*******************/
-//hello
 			if (forth == 0x1F) {
 				current_key = KEY_JUMP;
 				break;
