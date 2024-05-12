@@ -579,20 +579,16 @@ int main() {
 	int frame_select = 0;
 	Entity *mario;
 	Entity *entity;
-	/*
+	
 	if ((vga_ball_fd = open(device_path, O_RDWR)) < 0) {
 		fprintf(stderr, "Failed to open hardware device: %s\n", device_path);
 		return EXIT_FAILURE;
 	}
 
+	/*
 	if ((keyboard = openkeyboard(&endpoint_address)) == NULL) {
 		fprintf(stderr, "Did not find a keyboard\n");
 		exit(EXIT_FAILURE);
-	}
-
-	if (pthread_create(&input_thread, NULL, input_thread_function, NULL) != 0) {
-		fprintf(stderr, "Failed to create input thread\n");
-		return EXIT_FAILURE;
 	}
 	*/
 
@@ -638,6 +634,13 @@ int main() {
 	printf("%s\n", "Claimed Interface");
 
 	////////////////////////////////
+
+	if (pthread_create(&input_thread, NULL, input_thread_function, NULL) != 0) {
+		fprintf(stderr, "Failed to create input thread\n");
+		return EXIT_FAILURE;
+	}
+
+	
 
 	new_game(&game);
 
