@@ -241,7 +241,7 @@ void *input_thread_function(void *ignored)
 		
 			chosen = 0;
 
-			if (forth == 0x1F) {
+			if (fourth == 0x1F) {
 				current_key = KEY_JUMP;
 				break;
 			} 
