@@ -226,7 +226,7 @@ void *input_thread_function(void *ignored)
 	for (;;) {
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		if (r == 0 && transferred == sizeof(packet)) {
-			fprintf("Successful Transfer")
+			printf("Successful Transfer");
 
 			first = packet.keycode[0];
 			second = packet.keycode[1];
