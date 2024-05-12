@@ -39,6 +39,15 @@ enum key_input current_key;
 uint8_t endpoint_address;
 pthread_t input_thread;
 
+///////////////////////////
+	// input from device
+libusb_context *ctx = NULL; // a libusb session
+libusb_device **devs; // pointer to pointer of device, used to retrieve a list of devices
+int r; // for return values
+ssize_t cnt; // holding number of devices in list
+struct libusb_device_handle *mouse; // a mouse device handle
+////////////////////////
+
 void write_to_hardware(int vga_fd, int register_address, int data) {
 	vga_ball_arg_t vla;
 	vla.addr = register_address;
