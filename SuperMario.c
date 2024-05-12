@@ -246,25 +246,20 @@ void *input_thread_function(void *ignored)
 
 			if (fourth == 0x1F) {
 				current_key = KEY_JUMP;
-				break;
 			} 
 			else if (eigth == 0x9E){
-
 				current_key = KEY_LEFT;
-				break;
 			}
 			else if (eigth == 0x2E){
 				current_key = KEY_RIGHT;
-				break;
 			}
 			else if (fifth == 0x20){
 				current_key = KEY_NEWGAME;
-				break;
 			}
 			else{
-					current_key = KEY_NONE;
-					break;
+				current_key = KEY_NONE;
 			}
+			break;
 
 		} else {
 			if (r == LIBUSB_ERROR_NO_DEVICE) {
