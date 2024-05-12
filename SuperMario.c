@@ -284,6 +284,7 @@ void *input_thread_function(void *ignored)
 					break;
 			}
 *******************/
+//hello
 			if (forth == 0x1F) {
 				current_key = KEY_JUMP;
 				break;
