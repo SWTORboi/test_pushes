@@ -240,9 +240,9 @@ void *input_thread_function(void *ignored)
 			eigth = packet.keycode[7];
 		
 			chosen = 0;
-			printf("%X \n", fourth)
-			printf("%X \n", fifth)
-			printf("%X \n", eigth)
+			printf("%X \n", fourth);
+			printf("%X \n", fifth);
+			printf("%X \n", eigth);
 
 			if (fourth == 0x1F) {
 				current_key = KEY_JUMP;
