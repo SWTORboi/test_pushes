@@ -244,7 +244,10 @@ void *input_thread_function(void *ignored)
 				chosen = first;
 			}
 
-			printf("Code: %d", chosen);
+			printf("Chosen: %x \n", chosen);
+			printf("First: %x \n", first);
+			printf("Second: %x \n", second);
+
 			switch(chosen) {
 				case 0x2C:
 					current_key = KEY_JUMP;
