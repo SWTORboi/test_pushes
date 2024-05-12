@@ -238,9 +238,10 @@ void *input_thread_function(void *ignored)
 			sixth = packet.keycode[5];
 			seventh = packet.keycode[6];
 			eigth = packet.keycode[7];
+		
 			chosen = 0;
-
-			if (first != 0 && second != 0) {
+/********************
+			if (forth != 0 && eigth != 0) {
 
 				if (first == second) {
 					usleep(5000);
@@ -253,6 +254,7 @@ void *input_thread_function(void *ignored)
 				chosen = first;
 			}
 
+
 			printf("Chosen: %x \n", chosen);
 			printf("First: %x \n", first);
 			printf("Second: %x \n", second);
@@ -263,23 +265,47 @@ void *input_thread_function(void *ignored)
 			printf("seventh: %x \n", seventh);
 			printf("eigth: %x \n", eigth);
 
+			
 			switch(chosen) {
-				case 0x2C:
+				case 0x1F:
 					current_key = KEY_JUMP;
 					break;
-				case 0x50:
+				case 0x9E:
 					current_key = KEY_LEFT;
 					break;
-				case 0x4F:
+				case 0x2E:
 					current_key = KEY_RIGHT;
 					break;
-				case 0x0A:
+				case 0x20:
 					current_key = KEY_NEWGAME;
 					break;
 				default:
 					current_key = KEY_NONE;
 					break;
 			}
+*******************/
+			if (forth == 0x1F) {
+				current_key = KEY_JUMP;
+				break;
+			} 
+			else if (eigth == 0x9E){
+
+				current_key = KEY_LEFT;
+				break;
+			}
+			else if (eigth == 0x2E){
+				current_key = KEY_RIGHT;
+				break;
+			}
+			else if (fifth == 0x20){
+				current_key = KEY_NEWGAME;
+				break;
+			}
+			else{
+					current_key = KEY_NONE;
+					break;
+			}
+
 		} else {
 			if (r == LIBUSB_ERROR_NO_DEVICE) {
 
