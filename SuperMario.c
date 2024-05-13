@@ -241,9 +241,14 @@ void *input_thread_function(void *ignored)
 			eigth = packet.keycode[7];
 		
 			chosen = 0;
-			printf("%X \n", fourth);
-			printf("%X \n", fifth);
-			printf("%X \n", seventh);
+			printf("First: %X \n", first);
+			printf("Second: %X \n", second);
+			printf("Third: %X \n", third);
+			printf("Fourth: %X \n", fourth);
+			printf("Fifth: %X \n", fifth);
+			printf("Sixth: %X \n", sixth);
+			printf("Seventh: %X \n", seventh);
+			printf("Eigth: %X \n", eigth);
 
 			if (fourth == 0x1F) { 							chosen = fourth; } 
 			else if (seventh == 0x9E || seventh == 0x2E){ 	chosen = seventh; }
