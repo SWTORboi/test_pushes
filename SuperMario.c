@@ -241,20 +241,24 @@ void *input_thread_function(void *ignored)
 			eigth = packet.keycode[7];
 		
 			chosen = 0;
-			printf("Packet Size: %d \n", sizeof(packet));
-			printf("First: %X \n", first);
-			printf("Second: %X \n", second);
-			printf("Third: %X \n", third);
-			printf("Fourth: %X \n", fourth);
-			printf("Fifth: %X \n", fifth);
-			printf("Sixth: %X \n", sixth);
-			printf("Seventh: %X \n", seventh);
-			printf("Eigth: %X \n", eigth);
+			/*******************
+			printf("Packet Size: %d", sizeof(packet));
+			printf("First: %X", first);
+			printf("Second: %X ", second);
+			printf("Third: %X ", third);
+			printf("Fourth: %X", fourth);
+			printf("Fifth: %X ", fifth);
+			printf("Sixth: %X ", sixth);
+			printf("Seventh: %X", seventh);
+			printf("Eigth: %Xs", eigth);
+			*************8********/
 
-			if (fourth == 0x1F) { 							chosen = fourth; } 
-			else if (seventh == 0x01 || seventh == 0x02){ 	chosen = seventh; }
-			else if (fifth == 0x20){ 						chosen = fifth; }
-			else {											chosen = 0; }
+			if (fourth == 0x1F) { 									  
+				chosen = fourth; }
+			else if (fifth == 0x01 || fifth == 0x02 || fifth == 0x20){ 
+				chosen = fifth; }
+			else{												 	  
+				chosen = 0; }
 			
 			switch(chosen) {
 				case 0x1F:
