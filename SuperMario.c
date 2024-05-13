@@ -252,7 +252,7 @@ void *input_thread_function(void *ignored)
 			printf("Eigth: %X \n", eigth);
 
 			if (fourth == 0x1F) { 							chosen = fourth; } 
-			else if (seventh == 0x9E || seventh == 0x2E){ 	chosen = seventh; }
+			else if (seventh == 0x01 || seventh == 0x02){ 	chosen = seventh; }
 			else if (fifth == 0x20){ 						chosen = fifth; }
 			else {											chosen = 0; }
 			
@@ -260,10 +260,10 @@ void *input_thread_function(void *ignored)
 				case 0x1F:
 					current_key = KEY_JUMP;
 					break;
-				case 0x9E:
+				case 0x01:
 					current_key = KEY_LEFT;
 					break;
-				case 0x2E:
+				case 0x02:
 					current_key = KEY_RIGHT;
 					break;
 				case 0x20:
