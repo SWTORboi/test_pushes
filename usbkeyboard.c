@@ -53,7 +53,8 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
 		const struct libusb_interface_descriptor *inter =
 			config->interface[i].altsetting + k ;
         //problem statement, removed usb classifier
-		if ( inter->bInterfaceClass == LIBUSB_CLASS_HID ) {
+		if ( inter->bInterfaceClass == LIBUSB_CLASS_HID &&
+				 inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
 			int r;
 			if ((r = libusb_open(dev, &keyboard)) != 0) {
 				fprintf(stderr, "Error: libusb_open failed: %d\n", r);
