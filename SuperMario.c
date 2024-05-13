@@ -226,8 +226,9 @@ void *input_thread_function(void *ignored)
 	uint8_t first, second, third, fourth, fifth, sixth, seventh, eigth, chosen;
 
 	for (;;) {
-		//r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
+				 
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
+		printf("Attempted Reading Interrupt: %d \n", r);
 		if (r == 0 && transferred == sizeof(packet)) {
 
 			first = packet.keycode[0];
