@@ -228,7 +228,7 @@ void *input_thread_function(void *ignored)
 	for (;;) {
 
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
-		printf("Attempted Reading Interrupt: %d \n", r);
+		//printf("Attempted Reading Interrupt: %d \n", r);
 		if (r == 0 && transferred == sizeof(packet)) {
 
 			first = packet.keycode[0];
@@ -243,10 +243,10 @@ void *input_thread_function(void *ignored)
 			chosen = 0;
 			printf("%X \n", fourth);
 			printf("%X \n", fifth);
-			printf("%X \n", eigth);
+			printf("%X \n", seventh);
 
 			if (fourth == 0x1F) { 							chosen = fourth; } 
-			else if (eigth == 0x9E || eigth == 0x2E){ 		chosen = eigth; }
+			else if (seventh == 0x9E || seventh == 0x2E){ 	chosen = seventh; }
 			else if (fifth == 0x20){ 						chosen = fifth; }
 			else {											chosen = 0; }
 			
