@@ -241,6 +241,7 @@ void *input_thread_function(void *ignored)
 			eigth = packet.keycode[7];
 		
 			chosen = 0;
+			printf("Packet Size: %d \n", sizeof(packet));
 			printf("First: %X \n", first);
 			printf("Second: %X \n", second);
 			printf("Third: %X \n", third);
