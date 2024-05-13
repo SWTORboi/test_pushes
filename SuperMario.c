@@ -226,7 +226,7 @@ void *input_thread_function(void *ignored)
 	uint8_t first, second, third, fourth, fifth, sixth, seventh, eigth, chosen;
 
 	for (;;) {
-				 
+
 		r = libusb_interrupt_transfer(keyboard, endpoint_address, (unsigned char *)&packet, sizeof(packet), &transferred, 0);
 		printf("Attempted Reading Interrupt: %d \n", r);
 		if (r == 0 && transferred == sizeof(packet)) {
@@ -245,22 +245,28 @@ void *input_thread_function(void *ignored)
 			printf("%X \n", fifth);
 			printf("%X \n", eigth);
 
-			if (fourth == 0x1F) {
-				current_key = KEY_JUMP;
-			} 
-			else if (eigth == 0x9E){
-				current_key = KEY_LEFT;
+			if (fourth == 0x1F) { 							chosen = fourth; } 
+			else if (eigth == 0x9E || eigth == 0x2E){ 		chosen = eigth; }
+			else if (fifth == 0x20){ 						chosen = fifth; }
+			else {											chosen = 0; }
+			
+			switch(chosen) {
+				case 0x1F:
+					current_key = KEY_JUMP;
+					break;
+				case 0x9E:
+					current_key = KEY_LEFT;
+					break;
+				case 0x2E:
+					current_key = KEY_RIGHT;
+					break;
+				case 0x20:
+					current_key = KEY_NEWGAME;
+					break;
+				default:
+					current_key = KEY_NONE;
+					break;
 			}
-			else if (eigth == 0x2E){
-				current_key = KEY_RIGHT;
-			}
-			else if (fifth == 0x20){
-				current_key = KEY_NEWGAME;
-			}
-			else{
-				current_key = KEY_NONE;
-			}
-			break;
 
 		} else {
 			if (r == LIBUSB_ERROR_NO_DEVICE) {
